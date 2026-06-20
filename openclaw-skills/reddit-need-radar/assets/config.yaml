@@ -1,0 +1,61 @@
+# Reddit 用户需求雷达配置 - RSS 版，无需 Reddit API client id / secret
+
+# 每次最多推送多少条
+max_email_items: 30
+
+# 没有结果时是否也发送空邮件
+send_empty_email: false
+
+# 只保留需求评分 >= 该值的内容
+min_need_score: 2
+
+# Reddit RSS 查询时间窗口：hour / day / week / month / year / all
+reddit_time_filter: day
+
+# 每个 RSS 搜索源最多读取多少条
+max_entries_per_feed: 50
+
+# 请求 Reddit RSS 时使用的 User-Agent
+http_user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36 reddit-need-radar-rss/0.2"
+
+# 单个 RSS 请求超时时间，避免网络卡住一直不返回
+request_timeout_seconds: 10
+
+# 每个 RSS 请求之间的间隔，避免请求过快
+request_delay_seconds: 10
+
+# 关注的 subreddit
+subreddits:
+  - SaaS
+  - startups
+  - Entrepreneur
+
+# 搜索短语。程序会为每个 subreddit + 每个 query 生成 search.rss URL。
+queries: []
+
+# 直接监听 subreddit 新帖 RSS，只请求 3 个源，避免 search.rss 触发限流。
+new_post_subreddits:
+  - SaaS
+  - startups
+  - Entrepreneur
+
+# 需求判断关键词，命中越多分越高
+need_keywords:
+  - "looking for"
+  - "is there"
+  - "any recommendations"
+  - "recommend"
+  - "i wish"
+  - "does anyone know"
+  - "need help"
+  - "best way"
+  - "tool"
+  - "software"
+  - "automate"
+  - "automation"
+  - "alternative"
+  - "problem"
+  - "pain"
+  - "annoying"
+  - "frustrating"
+  - "workaround"
